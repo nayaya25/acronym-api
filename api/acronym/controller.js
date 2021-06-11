@@ -9,7 +9,7 @@ const {
 const getAll = async (req, res) => {
 	try {
 		const acronyms = await getAcronyms(req.query);
-		res.status(200).json({
+		res.status(206).json({
 			status: "success",
 			message: "Acronyms Fetch Successful",
 			acronyms,
