@@ -9,7 +9,7 @@ module.exports = {
 		const { limit, offset } = getPagination(from, limitParam);
 		try {
 			const acronyms = await Acronym.find({
-				acronym: ".*" + search + ".*",
+				acronym: { $regex: ".*" + search + ".*", $options: "i" },
 			})
 				.select(["acronym", "definition"])
 				.skip(offset)
