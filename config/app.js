@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 
 const app = express();
 
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(helmet());
 app.use(morgan("dev"));
 app.use(cors());

@@ -22,6 +22,7 @@ module.exports = {
 		}
 	},
 	async createAcronym(acronym) {
+		console.log({ acronym });
 		try {
 			const newAcronym = Acronym.create(acronym);
 			return newAcronym;

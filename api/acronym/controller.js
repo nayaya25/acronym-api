@@ -21,10 +21,9 @@ const getAll = async (req, res) => {
 };
 
 const create = async (req, res) => {
-	const { accronym, definition } = req.body;
-	const accronymData = { accronym, definition, createdAt: new Date() };
+	const { acronym, definition } = req.body;
 	try {
-		const newAcronym = await createAcronym(accronymData);
+		const newAcronym = await createAcronym({ acronym, definition });
 		res.status(201).json({
 			status: "success",
 			message: "Accronym Creation Successful",
@@ -36,14 +35,18 @@ const create = async (req, res) => {
 };
 
 const update = async (req, res) => {
-	const { accronym, definition } = req.body;
-	const accronymData = { accronym, definition, updatedAt: new Date() };
+	const { acronym: newAcronym, definition } = req.body;
+	const { acronym } = req.params;
+	console.log({ acronym, definition });
 	try {
-		const updatedAccronym = await updateAcronym(accronym, accronymData);
+		const updatedAcronym = await updateAcronym(acronym, {
+			acronym: newAcronym,
+			definition,
+		});
 		res.status(200).json({
 			status: "success",
 			message: "Accronym Update Successful",
-			accronym: updatedAccronym,
+			acronym: updatedAcronym,
 		});
 	} catch (error) {
 		console.log({ error });
