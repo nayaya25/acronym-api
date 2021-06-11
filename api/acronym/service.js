@@ -8,24 +8,20 @@ module.exports = {
 		const search = searchParam ? searchParam : "";
 		const { limit, offset } = getPagination(from, limitParam);
 		try {
-			const acronyms = await Acronym.find({
-				acronym: { $regex: ".*" + search + ".*", $options: "i" },
+			return await Acronym.find({
+				acronym: { $regex: `.*${search}.*`, $options: "i" },
 			})
 				.select(["acronym", "definition"])
 				.skip(offset)
 				.limit(limit);
-
-			return acronyms;
 		} catch (error) {
 			console.log({ error });
 			return [];
 		}
 	},
 	async createAcronym(acronym) {
-		console.log({ acronym });
 		try {
-			const newAcronym = Acronym.create(acronym);
-			return newAcronym;
+			return await Acronym.create(acronym);
 		} catch (error) {
 			console.log({ error });
 			return {};
@@ -46,10 +42,9 @@ module.exports = {
 	},
 	async deleteAcronym(acronymId) {
 		try {
-			const deletedAcronym = await Acronym.findOneAndDelete({
+			return await Acronym.findOneAndDelete({
 				_id: acronymId,
 			});
-			return deletedAcronym;
 		} catch (error) {
 			console.log({ error });
 			return {};
