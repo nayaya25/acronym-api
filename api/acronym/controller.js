@@ -69,9 +69,8 @@ const destroy = async (req, res) => {
 };
 
 const load = async (req, res) => {
-	console.log({ body: req.body });
 	try {
-		// await loadData();
+		await loadData();
 		res.status(200).json({ status: "success" });
 	} catch (error) {
 		console.log({ error });
