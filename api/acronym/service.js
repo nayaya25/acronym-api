@@ -27,23 +27,20 @@ module.exports = {
 			return {};
 		}
 	},
-	async updateAcronym(acronymId, newData) {
+	async updateAcronym(acronym, newData) {
 		try {
-			const updatedAcronym = await Acronym.findOneAndUpdate(
-				{ _id: acronymId },
-				newData
-			);
-			updatedAcronym.save();
-			return updatedAcronym;
+			return await Acronym.findOneAndUpdate({ acronym }, newData, {
+				new: true,
+			});
 		} catch (error) {
 			console.log({ error });
 			return {};
 		}
 	},
-	async deleteAcronym(acronymId) {
+	async deleteAcronym(acronym) {
 		try {
 			return await Acronym.findOneAndDelete({
-				_id: acronymId,
+				acronym,
 			});
 		} catch (error) {
 			console.log({ error });

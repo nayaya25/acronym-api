@@ -12,7 +12,7 @@
     "express": "^4.17.1",
     "helmet": "^4.6.0",
     "mongodb": "^3.6.9",
-    "mongoose": "^5.12.11",
+    "mongoose": "^5.12.13",
     "morgan": "^1.10.0"
   },
   "keywords": [

@@ -7,7 +7,6 @@ const constructData = (objArr) => {
 		const [definition] = Object.values(obj);
 		data.push({ acronym, definition });
 	});
-	console.log({ data });
 	return data;
 };
 
