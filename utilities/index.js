@@ -16,4 +16,15 @@ const getPagination = (page, size) => {
 
 	return { limit, offset };
 };
-module.exports = { envVariables, constructData, getPagination };
+
+const handleUnhandledError = () => {
+	process.on("unhandledRejection", (err) => {
+		console.error({ err });
+	});
+};
+module.exports = {
+	envVariables,
+	constructData,
+	getPagination,
+	handleUnhandledError,
+};

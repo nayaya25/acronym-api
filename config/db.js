@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { envVariables } = require("../utilities");
 
-mongoose.connect(envVariables.databaseConnString, {
+mongoose.connect("mongodb://mongo:27017/world-texting-foundation", {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
 	useFindAndModify: false,
